@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- LOGIN PAGE -->
+    <div class="login-container" id="loginPage">
+
+        <div class="login-card">
+            <div class="logo">🎓</div>
+
+            <h1>Student Portal</h1>
+            <p class="subtitle">Welcome back! Please login to continue.</p>
+
+            <form onsubmit="login(event)">
+
+                <div class="input-group">
+                    <label>Roll Number</label>
+                    <input type="text" id="rollno"
+                           placeholder="Enter your roll number" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password"
+                           placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    Login
+                </button>
+
+                <p id="errorMessage" class="error"></p>
+
+            </form>
+
+            <p class="footer-text"> 2026 Student Portal</p>
+        </div>
+
+    </div>
+
+
+    <!-- STUDENT DASHBOARD -->
+    <div class="dashboard" id="dashboardPage" style="display:none;">
+
+        <header class="navbar">
+            <h2>🎓 Student Portal</h2>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </header>
+
+        <section class="welcome-section">
+            <h1>Welcome, Student!</h1>
+            <p>Here is your academic profile and information.</p>
+        </section>
+
+        <section class="profile-card">
+
+            <div class="profile-header">
+                <img src="student.jfif" alt="Student Profile"
+                     class="profile-image">
+
+                <div>
+                    <h2>Student Name</h2>
+                    <p class="student-label">Student Profile</p>
+                </div>
+            </div>
+
+            <div class="details">
+
+                <div class="detail-box">
+                    <span>Roll Number</span>
+                    <h3>24EU08112</h3>
+                </div>
+
+                <div class="detail-box">
+                    <span>Department</span>
+                    <h3>Computer Science</h3>
+                </div>
+
+                <div class="detail-box">
+                    <span>Academic Year</span>
+                    <h3>2024 - 2028</h3>
+                </div>
+
+                <div class="detail-box">
+                    <span>Email</span>
+                    <h3>student@example.com</h3>
+                </div>
+
+                <div class="detail-box">
+                    <span>Phone Number</span>
+                    <h3>9395112757</h3>
+                </div>
+
+                <div class="detail-box">
+                    <span>University</span>
+                    <h3>BS University</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer class="dashboard-footer">
+            2026 Student Portal | All Rights Reserved
+        </footer>
+
+    </div>
+
+
+    <!-- LOGIN JAVASCRIPT -->
+    <script>
+        function login(event) {
+            event.preventDefault();
+
+            const rollno = document.getElementById("rollno").value;
+            const password = document.getElementById("password").value;
+
+            if (rollno === "24EU08112" && password === "12345") {
+
+                document.getElementById("loginPage").style.display = "none";
+                document.getElementById("dashboardPage").style.display = "block";
+
+            } else {
+                document.getElementById("errorMessage").innerText =
+                    "Invalid Roll Number or Password!";
+            }
+        }
+
+        function logout() {
+            document.getElementById("dashboardPage").style.display = "none";
+            document.getElementById("loginPage").style.display = "flex";
+
+            document.getElementById("rollno").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("errorMessage").innerText = "";
+        }
+    </script>
+
+</body>
+</html>
